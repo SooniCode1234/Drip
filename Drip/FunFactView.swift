@@ -92,6 +92,19 @@ struct FunFactView: View {
                 .padding(.horizontal, 25)
                 .padding(.top, 25)
                 Spacer()
+                
+                Link(destination: URL(string: "https://www3.epa.gov/safewater/kids/waterfactsoflife.html") ?? URL(string: "https://www.apple.com")!) {
+                    Text("See Source")
+                        .font(.system(.title2, design: .rounded))
+                        .bold()
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .tracking(0.35)
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: UIScreen.main.bounds.width - 40, maxHeight: 68)
+                        .background(Color.blue)
+                        .cornerRadius(13)
+                        .padding(.bottom)
+                }
             }
             .padding(.horizontal, 20)
         }
