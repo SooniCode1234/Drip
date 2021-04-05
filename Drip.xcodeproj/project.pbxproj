@@ -13,6 +13,7 @@
 		CD7ABFDD2618FE1D0022260F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD7ABFDC2618FE1D0022260F /* Preview Assets.xcassets */; };
 		CD7ABFE6261904120022260F /* DRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7ABFE5261904120022260F /* DRButton.swift */; };
 		CD7ABFE9261911FC0022260F /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7ABFE8261911FC0022260F /* WaveView.swift */; };
+		CD7ABFF3261A741D0022260F /* FunFactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7ABFF2261A741D0022260F /* FunFactView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CD7ABFDE2618FE1D0022260F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD7ABFE5261904120022260F /* DRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRButton.swift; sourceTree = "<group>"; };
 		CD7ABFE8261911FC0022260F /* WaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		CD7ABFF2261A741D0022260F /* FunFactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunFactView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				CD7ABFD72618FE1B0022260F /* ContentView.swift */,
 				CD7ABFE8261911FC0022260F /* WaveView.swift */,
 				CD7ABFE5261904120022260F /* DRButton.swift */,
+				CD7ABFF2261A741D0022260F /* FunFactView.swift */,
 				CD7ABFD92618FE1D0022260F /* Assets.xcassets */,
 				CD7ABFDE2618FE1D0022260F /* Info.plist */,
 				CD7ABFDB2618FE1D0022260F /* Preview Content */,
@@ -148,6 +151,7 @@
 				CD7ABFE6261904120022260F /* DRButton.swift in Sources */,
 				CD7ABFD62618FE1B0022260F /* DripApp.swift in Sources */,
 				CD7ABFE9261911FC0022260F /* WaveView.swift in Sources */,
+				CD7ABFF3261A741D0022260F /* FunFactView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
