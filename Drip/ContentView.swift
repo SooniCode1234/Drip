@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var loopTopCircle = false
     @State private var showFunFactsView = false
+    @State private var showCalculatorView = false
     
     var body: some View {
         ZStack {
@@ -35,14 +36,15 @@ struct ContentView: View {
                 Spacer()
                 
                 VStack(spacing: 24) {
-                    DRButton(title: "Fun Facts", backgroundColor: Color(#colorLiteral(red: 0.3450980484485626, green: 0.33725491166114807, blue: 0.8392156958580017, alpha: 1))) {
-                        showFunFactsView = true
-                    }
-                    .fullScreenCover(isPresented: $showFunFactsView) {
-                        FunFactView()
-                    }
+                    DRButton(title: "Fun Facts", backgroundColor: Color(#colorLiteral(red: 0.3450980484485626, green: 0.33725491166114807, blue: 0.8392156958580017, alpha: 1))) { showFunFactsView = true }
+                        .fullScreenCover(isPresented: $showFunFactsView) {
+                            FunFactView()
+                        }
                     
-                    DRButton(title: "Water Calculator", backgroundColor: Color.blue) {}
+                    DRButton(title: "Water Calculator", backgroundColor: Color.blue) { showCalculatorView = true }
+                        .fullScreenCover(isPresented: $showCalculatorView) {
+                            CalculatorView()
+                        }
                 }
                 
                 Spacer()
