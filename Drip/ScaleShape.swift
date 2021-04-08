@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyCustomShape: Shape {
+    
+    @Binding var animating: Bool
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
         
@@ -24,7 +27,7 @@ struct MyCustomShape: Shape {
 
         path.addLine(to: CGPoint(x: 0.68182*width, y: 0.94444*height))
 
-        // MARK: - FIRST TOTTER
+        // MARK: - SECOND BRANCH OF THE SECOND SWING
         path.move(to: CGPoint(x: 0.93182*width, y: 0.66667*height))
 
         path.addLine(to: CGPoint(x: 0.81818*width, y: 0.27778*height))
@@ -89,7 +92,7 @@ struct MyCustomShape: Shape {
 
 struct ScaleShape_Previews: PreviewProvider {
     static var previews: some View {
-        MyCustomShape()
+        MyCustomShape(animating: .constant(true))
             .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
             .frame(width: 100, height: 100)
     }
