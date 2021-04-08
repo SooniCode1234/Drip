@@ -14,20 +14,24 @@ struct MyCustomShape: Shape {
         let height = rect.size.height
         let width = rect.size.width
         
+        // MARK: - POLE
         path.move(to: CGPoint(x: 0.5*width, y: 0.94444*height))
 
         path.addLine(to: CGPoint(x: 0.5*width, y: 0.25*height))
 
+        // MARK: - BASE
         path.move(to: CGPoint(x: 0.31818*width, y: 0.94444*height))
 
         path.addLine(to: CGPoint(x: 0.68182*width, y: 0.94444*height))
 
+        // MARK: - FIRST TOTTER
         path.move(to: CGPoint(x: 0.93182*width, y: 0.66667*height))
 
         path.addLine(to: CGPoint(x: 0.81818*width, y: 0.27778*height))
 
         path.addLine(to: CGPoint(x: 0.70455*width, y: 0.66667*height))
 
+        // MARK: - FIRST HALF OF THE SECOND CIRCLE
         path.move(to: CGPoint(x: 0.68182*width, y: 0.66667*height))
 
         path.addCurve(to: CGPoint(x: 0.81818*width, y: 0.83333*height), control1: CGPoint(x: 0.68182*width, y: 0.75889*height), control2: CGPoint(x: 0.74273*width, y: 0.83333*height))
@@ -38,12 +42,14 @@ struct MyCustomShape: Shape {
         
         path.closeSubpath()
         
-        path.move(to: CGPoint(x: 0.29545*width, y: 0.44444*height))
+        // MARK: - SECOND BRANCH OF THE FIRST SWING
+        path.move(to: CGPoint(x: 0.295405*width, y: 0.44444*height))
         
         path.addLine(to: CGPoint(x: 0.18182*width, y: 0.05556*height))
         
         path.addLine(to: CGPoint(x: 0.06818*width, y: 0.44444*height))
         
+        // MARK: - FIRST HALF OF THE FIRST CIRCLE
         path.move(to: CGPoint(x: 0.04545*width, y: 0.44444*height))
         
         path.addCurve(to: CGPoint(x: 0.18182*width, y: 0.61111*height), control1: CGPoint(x: 0.04545*width, y: 0.53667*height), control2: CGPoint(x: 0.10636*width, y: 0.61111*height))
@@ -54,14 +60,17 @@ struct MyCustomShape: Shape {
         
         path.closeSubpath()
         
+        // MARK: - SECOND TOTTER LINE
         path.move(to: CGPoint(x: 0.86363*width, y: 0.29388*height))
         
         path.addLine(to: CGPoint(x: 0.565*width, y: 0.18944*height))
         
+        // MARK: - FIRST TOTTER LINE
         path.move(to: CGPoint(x: 0.435*width, y: 0.14389*height))
         
         path.addLine(to: CGPoint(x: 0.13636*width, y: 0.03944*height))
         
+        // MARK: - SECOND HALF OF THE MAIN CIRCLE
         path.move(to: CGPoint(x: 0.5*width, y: 0.25*height))
         
         path.addCurve(to: CGPoint(x: 0.56818*width, y: 0.16667*height), control1: CGPoint(x: 0.53765*width, y: 0.25*height), control2: CGPoint(x: 0.56818*width, y: 0.21269*height))
