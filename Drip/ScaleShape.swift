@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MyCustomShape: Shape {
+struct ScaleShape: Shape {
     
-    @Binding var animating: Bool
+    var animating: Bool
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -167,7 +167,7 @@ struct MyCustomShape: Shape {
 
 struct ScaleShape_Previews: PreviewProvider {
     static var previews: some View {
-        MyCustomShape(animating: .constant(false))
+        ScaleShape(animating: false)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
             .frame(width: 100, height: 100)
     }

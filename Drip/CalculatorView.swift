@@ -11,8 +11,8 @@ struct CalculatorView: View {
     @State private var weight = ""
     @State private var isPulsating = false
     @State private var weightAmount: Double = 0
+    @State private var scaleAnimating = false
     @Environment(\.presentationMode) var presentationMode
-    
     
     var body: some View {
         ZStack {
@@ -33,7 +33,12 @@ struct CalculatorView: View {
                 
                 if weightAmount == 0 {
                     
-                   
+                    ScaleShape(animating: scaleAnimating)
+                        .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+                        .frame(width: 300, height: 300)
+                        .opacity(scaleAnimating ? 0.99 : 1)
+                        .animation(Animation.easeInOut(duration: 0.57).repeatForever(autoreverses: true))
+                        .onAppear { scaleAnimating = true }
                     
                 } else {
                     VStack(spacing: 10) {
