@@ -11,7 +11,7 @@ struct CalculatorView: View {
     @State private var weight = ""
     @State private var isPulsating = false
     @State private var weightAmount: Double = 0
-    @State private var scaleAnimating = false
+    @State var scaleAnimating = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -36,9 +36,13 @@ struct CalculatorView: View {
                     ScaleShape(animating: scaleAnimating)
                         .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                         .frame(width: 300, height: 300)
-                        .opacity(scaleAnimating ? 0.99 : 1)
-                        .animation(Animation.easeInOut(duration: 0.57).repeatForever(autoreverses: true))
-                        .onAppear { scaleAnimating = true }
+//                        .animation(Animation.easeInOut(duration: 2).repeatCount(3))
+                        .onAppear {
+                            withAnimation(Animation.linear.repeatCount(3)) {
+                                scaleAnimating.toggle()
+                                print(scaleAnimating)
+                            }
+                        }
                     
                 } else {
                     VStack(spacing: 10) {
