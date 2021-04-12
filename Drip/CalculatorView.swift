@@ -97,7 +97,9 @@ struct CalculatorView: View {
                 Spacer()
                 
                 VStack(spacing: 24) {
-                    TextField("Enter your weight (lbs)", text: $weight, onCommit: { weightAmount = calculateWaterAmountDaily(for: Double(weight) ?? 0) })
+                    TextField("Enter your weight (lbs)", text: $weight, onCommit: { weightAmount = calculateWaterAmountDaily(for: Double(weight) ?? 0)
+                        timer.upstream.connect().cancel()
+                    })
                         .font(Font.system(.callout, design: .rounded).weight(.semibold))
                         .frame(maxWidth: .infinity)
                         .frame(height: 48)
@@ -110,6 +112,7 @@ struct CalculatorView: View {
                     
                     DRButton(title: "Calculate", backgroundColor: .blue) {
                         weightAmount = calculateWaterAmountDaily(for: Double(weight) ?? 0)
+                        timer.upstream.connect().cancel()
                     }
                 }
                 
