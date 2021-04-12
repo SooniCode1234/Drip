@@ -1,4 +1,4 @@
-//
+
 //  ScaleShape.swift
 //  Drip
 //
@@ -9,10 +9,6 @@ import SwiftUI
 
 struct ScaleShape: Shape {
     var animating: Bool
-    var animatableData: Bool {
-        get { self.animating }
-        set { animating = newValue}
-    }
     
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -161,7 +157,7 @@ struct ScaleShape: Shape {
 
 struct ScaleShape_Previews: PreviewProvider {
     static var previews: some View {
-        ScaleShape(animating: false)
+        ScaleShape(animating: true)
             .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
             .frame(width: 100, height: 100)
     }

@@ -14,6 +14,8 @@ struct CalculatorView: View {
     @State var scaleAnimating = false
     @Environment(\.presentationMode) var presentationMode
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0, green: 0.5764705882, blue: 0.9137254902, alpha: 1)), Color(#colorLiteral(red: 0.5019607843, green: 0.8156862745, blue: 0.7803921569, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -36,12 +38,8 @@ struct CalculatorView: View {
                     ScaleShape(animating: scaleAnimating)
                         .stroke(Color.black, style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
                         .frame(width: 300, height: 300)
-//                        .animation(Animation.easeInOut(duration: 2).repeatCount(3))
-                        .onAppear {
-                            withAnimation(Animation.linear.repeatCount(3)) {
-                                scaleAnimating.toggle()
-                                print(scaleAnimating)
-                            }
+                        .onReceive(timer) { time in
+                            scaleAnimating.toggle()
                         }
                     
                 } else {
