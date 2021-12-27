@@ -33,59 +33,7 @@ struct FunFactView: View {
                 
                 ZStack {
                     ForEach(facts.reversed()) { fact in
-                        HStack {
-                            Text(fact.name)
-                                .font(.system(.largeTitle, design: .rounded))
-                                .bold()
-                                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                                .tracking(0.37)
-                                .multilineTextAlignment(.center)
-                                .frame(maxWidth: 289)
-                                .frame(width: calculateWidth(), height: (UIScreen.main.bounds.height / 1.8) - CGFloat((fact.id - scrolled) * 50))
-                                .background(fact.color)
-                                .shadow(color: fact.color.opacity(0.25), radius: 60, x: 0, y: 30)
-                                .cornerRadius(30)
-                                .offset(x: fact.id - scrolled <= 2 ? CGFloat(fact.id - scrolled) * 30 : 60)
-                            
-                            Spacer(minLength: 0)
-                        }
-                        .contentShape(Rectangle())
-                        .offset(x: fact.offset)
-                        .gesture(
-                            DragGesture()
-                                .onChanged { value in
-                                    withAnimation {
-                                        if value.translation.width < 0 && fact.id != facts.last?.id {
-                                            facts[fact.id].offset = value.translation.width
-                                        } else {
-                                            if fact.id > 0 {
-                                                facts[fact.id - 1].offset = -(calculateWidth() + 60) + value.translation.width
-                                            }
-                                        }
-                                    }
-                                }
-                                .onEnded { value in
-                                    withAnimation {
-                                        if value.translation.width < 0 {
-                                            if -value.translation.width > 180 && fact.id != facts.last!.id {
-                                                facts[fact.id].offset = -(calculateWidth() + 60)
-                                                scrolled += 1
-                                            } else {
-                                                facts[fact.id].offset = 0
-                                            }
-                                        } else {
-                                            if fact.id > 0 {
-                                                if value.translation.width > 180 {
-                                                    facts[fact.id - 1].offset = 0
-                                                    scrolled -= 1
-                                                } else {
-                                                    facts[fact.id - 1].offset = -(calculateWidth() + 60)
-                                                }
-                                            }
-                                        }
-                                    }
-                            }
-                        )
+                        ExtractedView(fact: fact, scrolled: $scrolled, facts: $facts)
                     }
                 }
                 .frame(height: UIScreen.main.bounds.height / 1.8)
@@ -126,14 +74,6 @@ struct FunFactView: View {
             , alignment: .topTrailing
         )
     }
-    
-    func calculateWidth() -> CGFloat {
-        let screen = UIScreen.main.bounds.width - 20
-        
-        let width = screen - (2 * 30)
-        
-        return width
-    }
 }
 
 struct FunFactView_Previews: PreviewProvider {
@@ -150,3 +90,74 @@ struct Fact: Identifiable {
 }
 
 
+
+struct ExtractedView: View {
+    
+    var fact: Fact
+    @Binding var scrolled: Int
+    @Binding var facts: [Fact]
+    
+    func calculateWidth() -> CGFloat {
+        let screen = UIScreen.main.bounds.width - 20
+        
+        let width = screen - (2 * 30)
+        
+        return width
+    }
+    
+    var body: some View {
+        HStack {
+            Text(fact.name)
+                .font(.system(.largeTitle, design: .rounded))
+                .bold()
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                .tracking(0.37)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 289)
+                .frame(width: calculateWidth(), height: (UIScreen.main.bounds.height / 1.8) - CGFloat((fact.id - scrolled) * 50))
+                .background(fact.color)
+                .shadow(color: fact.color.opacity(0.25), radius: 60, x: 0, y: 30)
+                .cornerRadius(30)
+                .offset(x: fact.id - scrolled <= 2 ? CGFloat(fact.id - scrolled) * 30 : 60)
+            
+            Spacer(minLength: 0)
+        }
+        .contentShape(Rectangle())
+        .offset(x: fact.offset)
+        .gesture(
+            DragGesture()
+                .onChanged { value in
+                    withAnimation {
+                        if value.translation.width < 0 && fact.id != facts.last?.id {
+                            facts[fact.id].offset = value.translation.width
+                        } else {
+                            if fact.id > 0 {
+                                facts[fact.id - 1].offset = -(calculateWidth() + 60) + value.translation.width
+                            }
+                        }
+                    }
+                }
+                .onEnded { value in
+                    withAnimation {
+                        if value.translation.width < 0 {
+                            if -value.translation.width > 180 && fact.id != facts.last!.id {
+                                facts[fact.id].offset = -(calculateWidth() + 60)
+                                scrolled += 1
+                            } else {
+                                facts[fact.id].offset = 0
+                            }
+                        } else {
+                            if fact.id > 0 {
+                                if value.translation.width > 180 {
+                                    facts[fact.id - 1].offset = 0
+                                    scrolled -= 1
+                                } else {
+                                    facts[fact.id - 1].offset = -(calculateWidth() + 60)
+                                }
+                            }
+                        }
+                    }
+                }
+        )
+    }
+}
